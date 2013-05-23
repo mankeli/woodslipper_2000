@@ -97,6 +97,7 @@ static void output_remaining()
 
 	fprintf(f, "WOOD_SIZE=%d,%d\n", woodsize.x, woodsize.y);
 	fprintf(f, "SLOWNESS=%d\n", slowness);
+	fprintf(f, "MILL_RADIUS=%d\n", millrad);
 
 	for (i = 0; i < block_count; i++)
 	{
@@ -603,6 +604,8 @@ static bool read_config(char *fn)
 				sscanf(value, "%d , %d", &(woodsize.x), &(woodsize.y));
 			else if (!strcmp(key, "SLOWNESS"))
 				sscanf(value, "%d", &slowness);
+			else if (!strcmp(key, "MILL_RADIUS"))
+				sscanf(value, "%d", &millrad);
 			else if (!strcmp(key, "BLOCK"))
 			{
 				if (mode == 1)
@@ -661,7 +664,7 @@ static void setup(char *fn)
 	sort_blocks();
 	validate_blocks();
 
-	printf("slowness parameter is %i\n", slowness);
+	printf("slowness parameter is %d. milling bit is %dmm\n", slowness, millrad);
 }
 
 int main(int argc, char **argv)
