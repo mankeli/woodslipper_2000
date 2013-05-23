@@ -560,6 +560,7 @@ static bool read_config(char *fn)
 {
 	int mode = 0;
 	int blockcounter = 0;
+	bool randomize = false;
 
 	if (!fn)
 		return false;
@@ -609,12 +610,24 @@ static bool read_config(char *fn)
 
 				blockcounter++;
 			}
+			else if (!strcmp(key, "RANDOMIZE"))
+			{
+				sscanf(value, "%d", &blockcounter);
+				randomize = true;
+			}
 		}
 
 		if (mode == 0)
 		{
 			if (blockcounter > 0)
+			{
 				init_blocks(blockcounter);
+
+				if (randomize)
+				{
+					randomize_blocks();
+				}
+			}
 			else
 			{
 				fclose(f);
