@@ -1,6 +1,6 @@
 
 // The OpenGL libraries, make sure to include the GLUT and OpenGL frameworks
-#ifdef WINDOWS
+#ifdef __WIN32__
 #include <gl/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
