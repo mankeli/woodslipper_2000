@@ -681,7 +681,7 @@ int main(int argc, char **argv)
 		setup(NULL);
 
 	// Sets up a double buffer with RGBA components and a depth component
-	glutInitDisplayMode(GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 
 	int window_w = 1100;
 	int window_h = (int)((float)woodsize.y * (float)window_w / (float)woodsize.x);
